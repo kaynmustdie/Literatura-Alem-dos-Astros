@@ -1,0 +1,146 @@
+/* ==========================================
+   CARDS DOS AUTORES
+========================================== */
+
+.autores-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Título principal */
+.autores-section h1 {
+    font-size: 36px;
+    color: #800000;
+    margin-bottom: 15px;
+}
+
+/* Texto de introdução */
+.intro-autores {
+    max-width: 800px;
+    margin: 0 auto 45px;
+    color: #982B1C;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* Títulos das categorias */
+.autores-section > h2 {
+    font-size: 28px;
+    color: #800000;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+/* Container dos cards */
+.autores-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+
+    display: grid;
+
+    /* 2 cards por linha */
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+/* ==========================================
+   CARD INDIVIDUAL
+========================================== */
+
+.autor-card {
+    background: #fff;
+
+    padding: 28px;
+
+    border-radius: 16px;
+
+    border: 1px solid #DAD4B5;
+
+    box-shadow: 0 5px 15px rgba(128, 0, 0, 0.12);
+
+    text-align: left;
+
+    transition: 0.3s;
+}
+
+/* Efeito quando passa o mouse */
+.autor-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.20);
+
+    border-color: #982B1C;
+}
+
+/* Nome do autor */
+.autor-card h3 {
+    color: #800000;
+
+    font-size: 24px;
+
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    border-bottom: 2px solid #982B1C;
+
+    padding-bottom: 10px;
+}
+
+/* Texto do autor */
+.autor-card p {
+    color: #800000;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+}
+
+/* Palavra "Obras" */
+.autor-card strong {
+    color: #982B1C;
+}
+
+
+/* ==========================================
+   CELULAR
+========================================== */
+
+@media (max-width: 768px) {
+
+    .autores-section {
+        padding: 35px 10px;
+    }
+
+    .autores-section h1 {
+        font-size: 28px;
+    }
+
+    .autores-section > h2 {
+        font-size: 24px;
+    }
+
+    .autores-container {
+        width: 95%;
+
+        /* 1 card por linha */
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .autor-card {
+        padding: 22px;
+    }
+
+    .autor-card h3 {
+        font-size: 21px;
+    }
+
+    .autor-card p {
+        font-size: 15px;
+    }
+}

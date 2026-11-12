@@ -1,0 +1,129 @@
+/* ==========================================
+   SEÇÃO DE LIVROS
+========================================== */
+
+.livros-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Títulos dos gêneros */
+.livros-section > h2 {
+    color: #800000;
+    font-size: 28px;
+
+    margin-top: 45px;
+    margin-bottom: 25px;
+}
+
+/* Container dos livros */
+.livros-container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+/* ==========================================
+   CARD DO LIVRO
+========================================== */
+
+.livro-card {
+    background-color: #ffffff;
+
+    padding: 28px;
+
+    border-radius: 16px;
+
+    border: 1px solid #DAD4B5;
+
+    box-shadow: 0 5px 15px rgba(128, 0, 0, 0.12);
+
+    text-align: left;
+
+    transition: 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.livro-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.20);
+
+    border-color: #982B1C;
+}
+
+
+/* Nome do livro */
+.livro-card h3 {
+    color: #800000;
+
+    font-size: 24px;
+
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 2px solid #982B1C;
+}
+
+
+/* Texto */
+.livro-card p {
+    color: #800000;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+}
+
+
+/* Autor e gênero */
+.livro-card strong {
+    color: #982B1C;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .livros-section {
+        padding: 35px 10px;
+    }
+
+    .livros-section > h2 {
+        font-size: 24px;
+    }
+
+    .livros-container {
+        width: 95%;
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .livro-card {
+        padding: 22px;
+    }
+
+    .livro-card h3 {
+        font-size: 21px;
+    }
+
+    .livro-card p {
+        font-size: 15px;
+    }
+}

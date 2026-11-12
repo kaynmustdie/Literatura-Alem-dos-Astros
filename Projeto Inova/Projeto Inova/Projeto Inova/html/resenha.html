@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Resenhas</title>
+    <link rel="stylesheet"href="../css/style.css">
+    <link rel="stylesheet" href="../css/cadastroeresenha.css">
+    <link rel="icon"href="../assets/logo - Editado.png"type="image/x-icon">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         MENU
+    =========================================== -->
+
+    <header>
+        <!-- Menu dropdown -->
+        <nav>
+       <ul class="navbar">
+          <li><a href="../html/index.html">Home</a></li>
+          <li><a href="../html/autores.html">Autores</a></li>
+          <li><a href="../html/livros.html">Livros</a></li>
+          <li><a href="../html/resenha.html">Resenhas</a></li>
+          <li><a href="../html/sobre.html">Sobre</a></li>
+          <li><a href="../html/cadastro.html">Cadastro</a></li>
+          <li><a href="../html/login.html">Entrar</a></li>
+        </ul>
+        </nav>
+    </header>
+
+
+    <!-- ==========================================
+         CONTEÚDO
+    =========================================== -->
+
+    <main class="resenha-container">
+
+
+        <!-- INTRODUÇÃO -->
+
+<main class="resenha-container">
+    <!-- FORMULÁRIO -->
+    <section class="resenha-form-box">
+        <h2>Escreva sua resenha</h2>
+
+        <form id="resenhaForm">
+            <div class="resenha-campo">
+                <label for="nome">Seu nome</label>
+                <input type="text" id="nome" placeholder="Digite seu nome" required>
+            </div>
+
+            <div class="resenha-campo">
+                <label for="livro">Livro</label>
+                <input type="text" id="livro" placeholder="Digite o nome do livro" required>
+            </div>
+
+            <div class="resenha-campo">
+                <label for="nota">Nota</label>
+                <select id="nota" required>
+                    <option value="">Escolha uma nota</option>
+                    <option value="5">★★★★★ — 5/5</option>
+                    <option value="4">★★★★☆ — 4/5</option>
+                    <option value="3">★★★☆☆ — 3/5</option>
+                    <option value="2">★★☆☆☆ — 2/5</option>
+                    <option value="1">★☆☆☆☆ — 1/5</option>
+                </select>
+            </div>
+
+            <!-- NOVO: Campo para o texto da resenha -->
+            <div class="resenha-campo">
+                <label for="texto">Sua opinião</label>
+                <textarea id="texto" rows="4" placeholder="O que achou da leitura?" required></textarea>
+            </div>
+
+            <button type="submit">Publicar Resenha</button>
+        </form>
+    </section>
+
+    <!-- NOVO: Feed para ler e interagir com resenhas -->
+    <section class="feed-resenhas">
+        <h2>Resenhas da Comunidade</h2>
+        <div id="listaResenhas">
+            <!-- O JavaScript vai preencher este espaço dinamicamente -->
+        </div>
+    </section>
+</main>
+
+
+        <!-- ==========================================
+             RESENHAS PUBLICADAS
+        =========================================== -->
+
+        <section class="resenhas-publicadas">
+
+            <h2>
+                Resenhas dos leitores
+            </h2>
+
+
+            <div id="listaResenhas">
+
+
+                <!-- RESENHA 1 -->
+
+                <article class="resenha-card">
+
+                    <div class="resenha-card-top">
+
+                        <div>
+
+                            <h3>
+                                A Hora da Estrela
+                            </h3>
+
+                            <p class="resenha-autor">
+                                Por Ana Clara
+                            </p>
+
+                        </div>
+
+                        <span class="resenha-nota">
+                            ★★★★★
+                        </span>
+
+                    </div>
+
+
+                    <p class="resenha-texto">
+
+                        Uma história emocionante e profunda.
+                        A narrativa faz o leitor refletir sobre
+                        a vida, a solidão e a busca por um lugar
+                        no mundo.
+
+                    </p>
+
+                </article>
+
+
+                <!-- RESENHA 2 -->
+
+                <article class="resenha-card">
+
+                    <div class="resenha-card-top">
+
+                        <div>
+
+                            <h3>
+                                Dom Casmurro
+                            </h3>
+
+                            <p class="resenha-autor">
+                                Por Ciely
+                            </p>
+
+                        </div>
+
+                        <span class="resenha-nota">
+                            ★★★★☆
+                        </span>
+
+                    </div>
+
+
+                    <p class="resenha-texto">
+
+                        Um clássico que desperta muitas dúvidas
+                        e interpretações. A narrativa deixa o
+                        leitor pensando sobre a história mesmo
+                        depois de terminar o livro.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         RODAPÉ
+    =========================================== -->
+
+    <footer class="rodape">
+
+        <p>
+            © 2026 Literatura Além dos Astros —
+            Leituras inesquecíveis.
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script>
+    const API_URL = 'http://localhost:3000/api';
+    const formulario = document.getElementById("resenhaForm");
+
+    //Carrega todas as resenhas salvas no SQLite assim que a página abre
+    document.addEventListener("DOMContentLoaded", carregarResenhas);
+
+    async function carregarResenhas() {
+        try {
+            const resposta = await fetch(`${API_URL}/resenhas`);
+            const resenhas = await resposta.json();
+
+            const lista = document.getElementById("listaResenhas");
+            lista.innerHTML = ""; // Limpa a lista antes de preencher
+
+            resenhas.forEach(resenha => {
+                // Gera as estrelas com base na nota salva no banco
+                let estrelas = "";
+                for (let i = 1; i <= 5; i++) {
+                    estrelas += i <= resenha.nota ? "★" : "☆";
+                }
+
+                // Monta a lista de comentários dessa resenha
+                const comentariosHTML = resenha.comentarios.map(c => `
+                    <p class="comentario-item"><strong>${c.nome_usuario}:</strong> ${c.comentario}</p>
+                `).join("");
+
+                // Cria o card mantendo as suas classes CSS originais
+                const card = document.createElement("article");
+                card.classList.add("resenha-card");
+
+                card.innerHTML = `
+                    <div class="resenha-card-top">
+                        <div>
+                            <h3>${resenha.livro}</h3>
+                            <p class="resenha-autor">Por ${resenha.nome_usuario}</p>
+                        </div>
+                        <span class="resenha-nota">${estrelas}</span>
+                    </div>
+
+                    <p class="resenha-texto">${resenha.texto}</p>
+
+                    <!-- Área de Interação: Curtir e Comentar -->
+                    <div class="resenha-interacoes" style="margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px;">
+                        <button type="button" onclick="curtirResenha(${resenha.id})">
+                            👍 Curtir (${resenha.curtidas})
+                        </button>
+
+                        <div class="comentarios-secao" style="margin-top: 10px;">
+                            ${comentariosHTML}
+                            <form onsubmit="enviarComentario(event, ${resenha.id})" style="display: flex; gap: 5px; margin-top: 8px;">
+                                <input type="text" class="com-nome" placeholder="Seu nome" required>
+                                <input type="text" class="com-texto" placeholder="Comentar..." required>
+                                <button type="submit">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                `;
+
+                lista.appendChild(card);
+            });
+        } catch (erro) {
+            console.error("Erro ao carregar resenhas:", erro);
+        }
+    }
+
+    // Envia a nova resenha para o server.js salvar no SQLite
+    formulario.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const dados = {
+            nome: document.getElementById("nome").value,
+            livro: document.getElementById("livro").value,
+            nota: Number(document.getElementById("nota").value),
+            texto: document.getElementById("texto").value
+        };
+
+        const resposta = await fetch(`${API_URL}/resenhas`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dados)
+        });
+
+        if (resposta.ok) {
+            formulario.reset();
+            carregarResenhas(); // Recarrega a lista direto do banco de dados
+        } else {
+            alert("Erro ao salvar resenha. Verifique se escolheu uma nota válida.");
+        }
+    });
+
+    // 3. Função para curtir
+    async function curtirResenha(id) {
+        await fetch(`${API_URL}/resenhas/${id}/curtir`, { method: "POST" });
+        carregarResenhas();
+    }
+
+    // 4. Função para enviar comentário
+    async function enviarComentario(event, resenhaId) {
+        event.preventDefault();
+        const form = event.target;
+
+        const dados = {
+            nome: form.querySelector(".com-nome").value,
+            comentario: form.querySelector(".com-texto").value
+        };
+
+        await fetch(`${API_URL}/resenhas/${resenhaId}/comentar`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dados)
+        });
+
+        carregarResenhas();
+    }
+</script>
+
+    <script src="../js/index.js"></script>
+    <script src="../js/server.js"></script>
+
+</body>
+
+</html>

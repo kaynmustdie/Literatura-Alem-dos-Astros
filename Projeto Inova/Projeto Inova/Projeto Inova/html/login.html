@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Literatura Além dos Astros</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cadastroeresenha.css">
+    <link rel="icon" href="../assets/logo - Editado.png" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav>
+       <ul class="navbar">
+          <li><a href="../html/index.html">Home</a></li>
+          <li><a href="../html/autores.html">Autores</a></li>
+          <li><a href="../html/livros.html">Livros</a></li>
+          <li><a href="../html/resenha.html">Resenhas</a></li>
+          <li><a href="../html/sobre.html">Sobre</a></li>
+          <li><a href="../html/cadastro.html">Cadastro</a></li>
+          <li><a href="../html/login.html">Entrar</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main class="cadastro-container">
+        <section class="cadastro-box">
+            <div class="cadastro-intro">
+                <h1>Bem-vindo(a) de volta</h1>
+                <p>Entre na sua conta para publicar e comentar resenhas.</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="campo">
+                    <label for="login">E-mail ou Nome de usuário</label>
+                    <br>
+                    <input type="text" id="login" placeholder="Digite seu e-mail ou usuário" required>
+                </div>
+                
+                <br><br>
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                </div>
+                <br><br>
+
+                <button type="submit" class="btn-cadastro">Entrar</button>
+            </form>
+
+            <div id="mensagemLogin"></div>
+
+            <p class="ja-cadastrado">
+                Ainda não tem conta? <a href="../html/cadastro.html">Cadastre-se</a>
+            </p>
+        </section>
+    </main>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <footer class="rodape">
+        <p>© 2026 Literatura Além dos Astros — Leituras inesquecíveis.</p>
+    </footer>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const login = document.getElementById("login").value;
+            const senha = document.getElementById("senha").value;
+            const mensagem = document.getElementById("mensagemLogin");
+
+            try {
+                const resposta = await fetch("http://localhost:3000/api/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ login, senha })
+                });
+
+                const dados = await resposta.json();
+
+                if (resposta.ok) {
+                    // Salva os dados do usuário na memória do navegador
+                    localStorage.setItem("usuarioLogado", JSON.stringify(dados.usuario));
+
+                    mensagem.innerHTML = "Login realizado! Redirecionando...";
+                    mensagem.className = "mensagem-sucesso";
+
+                    // Redireciona para a página de resenhas após 1 segundo
+                    setTimeout(() => {
+                        window.location.href = "../html/resenha.html";
+                    }, 1000);
+                } else {
+                    mensagem.innerHTML = dados.erro;
+                    mensagem.className = "mensagem-erro";
+                }
+            } catch (erro) {
+                mensagem.innerHTML = "Erro ao conectar com o servidor.";
+                mensagem.className = "mensagem-erro";
+            }
+        });
+    </script>
+</body>
+</html>

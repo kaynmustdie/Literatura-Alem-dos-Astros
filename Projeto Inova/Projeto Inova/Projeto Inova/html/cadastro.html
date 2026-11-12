@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cadastroeresenha.css" />
+    <link rel="icon" href="../assets/logo - Editado.png" type="image/x-icon" />
+  </head>
+
+  <body>
+    <!-- MENU -->
+
+    <header>
+      <!-- Menu dropdown -->
+      <nav>
+        <ul class="navbar">
+          <li><a href="../html/index.html">Home</a></li>
+          <li><a href="../html/autores.html">Autores</a></li>
+          <li><a href="../html/livros.html">Livros</a></li>
+          <li><a href="../html/resenha.html">Resenhas</a></li>
+          <li><a href="../html/sobre.html">Sobre</a></li>
+          <li><a href="../html/cadastro.html">Cadastro</a></li>
+          <li><a href="../html/login.html">Entrar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CADASTRO -->
+
+    <main class="cadastro-container">
+      <section class="cadastro-box">
+        <div class="cadastro-intro">
+          <h1>Crie sua conta</h1>
+
+          <p>
+            Faça parte do Literatura Além dos Astros e compartilhe sua paixão
+            pela literatura.
+          </p>
+        </div>
+
+        <form id="cadastroForm">
+          <!-- NOME -->
+          <div class="campo">
+            <label for="nome">Nome completo</label>
+
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome completo"
+              required
+            />
+          </div>
+
+          <!-- E-MAIL -->
+
+          <div class="campo">
+            <label for="email"> E-mail </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Digite seu e-mail"
+              required
+            />
+          </div>
+
+          <!-- USUÁRIO -->
+
+          <div class="campo">
+            <label for="usuario"> Nome de usuário </label>
+
+            <input
+              type="text"
+              id="usuario"
+              name="usuario"
+              placeholder="Escolha seu nome de usuário"
+              required
+            />
+          </div>
+
+          <!-- SENHA -->
+
+          <div class="campo">
+            <label for="senha"> Senha </label>
+
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="Digite sua senha"
+              required
+            />
+          </div>
+
+          <!-- CONFIRMAR SENHA -->
+
+          <div class="campo">
+            <label for="confirmarSenha"> Confirmar senha </label>
+
+            <input
+              type="password"
+              id="confirmarSenha"
+              name="confirmarSenha"
+              placeholder="Digite a senha novamente"
+              required
+            />
+          </div>
+
+          <!-- DATA -->
+
+          <div class="campo">
+            <label for="nascimento"> Data de nascimento </label>
+
+            <input type="date" id="nascimento" name="nascimento" required />
+          </div>
+
+          <!-- TERMOS -->
+
+          <div class="termos">
+            <input type="checkbox" id="termos" required />
+
+            <label for="termos">
+              Aceito os termos de uso e a política de privacidade.
+            </label>
+          </div>
+
+          <!-- BOTÃO -->
+
+          <button type="submit" class="btn-cadastro">Criar minha conta</button>
+        </form>
+
+        <!-- MENSAGEM -->
+
+        <div id="mensagemCadastro"></div>
+
+        <p class="ja-cadastrado">
+          Já possui uma conta?
+
+          <a href="../html/login.html"> Entrar </a>
+        </p>
+      </section>
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer class="rodape">
+      <p>© 2026 Literatura Além dos Astros — Leituras inesquecíveis.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+      const formulario = document.getElementById("cadastroForm");
+
+      formulario.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const usuario = document.getElementById("usuario").value;
+        const senha = document.getElementById("senha").value;
+        const confirmarSenha = document.getElementById("confirmarSenha").value;
+        const nascimento = document.getElementById("nascimento").value;
+        const mensagem = document.getElementById("mensagemCadastro");
+        document.addEventListener("DOMContentLoaded", () => {
+          carregarResenhas();
+
+          // Verifica se existe um usuário salvo no localStorage
+          const usuarioSalvo = localStorage.getItem("usuarioLogado");
+          if (usuarioSalvo) {
+            const user = JSON.parse(usuarioSalvo);
+            const campoNome = document.getElementById("nome");
+
+            campoNome.value = user.usuario; // Preenche com o @usuario (ou use user.nome)
+            campoNome.readOnly = true; // Impede que a pessoa mude o nome (opcional)
+          }
+        });
+
+        if (senha !== confirmarSenha) {
+          mensagem.innerHTML = "As senhas não são iguais.";
+          mensagem.className = "mensagem-erro";
+          return;
+        }
+
+        try {
+          const resposta = await fetch("http://localhost:3000/api/cadastro", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, email, usuario, senha, nascimento }),
+          });
+
+          const resultado = await resposta.json();
+
+          if (resposta.ok) {
+            mensagem.innerHTML =
+              "Cadastro realizado com sucesso! Bem-vindo(a), " + nome + "!";
+            mensagem.className = "mensagem-sucesso";
+            formulario.reset();
+          } else {
+            mensagem.innerHTML = resultado.erro || "Erro ao cadastrar.";
+            mensagem.className = "mensagem-erro";
+          }
+        } catch (erro) {
+          mensagem.innerHTML = "Erro de conexão com o servidor.";
+          mensagem.className = "mensagem-erro";
+        }
+      });
+    </script>
+  </body>
+</html>
