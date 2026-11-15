@@ -24,6 +24,8 @@ node server.js
 
 Depois disso, utilize o link http://localhost:3000/html/ para acessar a página principal
 
+ou acesse o link do render!! https://literatura-alem-dos-astros.onrender.com
+
 # Integrantes
 
 Alice Marion Medeiros Sant'ana
