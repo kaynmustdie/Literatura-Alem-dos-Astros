@@ -9,12 +9,15 @@ app.use(cors());
 app.use(express.json({ limit: '5mb' }));
 
 const pastaSite = path.join(__dirname, 'Projeto Inova', 'Projeto Inova', 'Projeto Inova');
+
 app.use(express.static(pastaSite));
 
-// Redireciona a página inicial '/' direto para o index.html
+app.use(express.static(path.join(pastaSite, 'html')));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(pastaSite, 'html', 'index.html'));
 });
+
 
 // Conecta ao banco SQLite na nuvem (Turso)
 const client = createClient({
