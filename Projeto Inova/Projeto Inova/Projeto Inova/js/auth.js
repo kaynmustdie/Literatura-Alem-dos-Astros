@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(() => {
                 window.location.href = destino; // Muda de página após a animação
-            }, 150);
+            }, 100);
         });
     });
 });

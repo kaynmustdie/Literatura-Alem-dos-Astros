@@ -941,7 +941,7 @@ html {
 /* Efeito de transição universal via classe no body */
 body {
     opacity: 1;
-    transition: opacity 0.15s ease-in-out;
+    transition: opacity 0.015s ease-in-out;
 }
 
 body.pagina-saindo {
