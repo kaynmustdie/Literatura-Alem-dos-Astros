@@ -1,33 +1,46 @@
 const express = require('express');
-const sqlite3 = require('sqlite3');
-const { open } = require('sqlite');
+const { createClient } = require('@libsql/client');
 const cors = require('cors');
 const path = require('path');
 const crypto = require('crypto');
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '5mb' })); // Permite salvar fotos convertidas em texto
+app.use(express.json({ limit: '5mb' }));
 
-// Aponta para a pasta do site
 const pastaSite = path.join(__dirname, 'Projeto Inova', 'Projeto Inova', 'Projeto Inova');
 app.use(express.static(pastaSite));
 
-//Redireciona para a página principal
+// Redireciona a página inicial '/' direto para o index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(pastaSite, 'html', 'index.html'));
 });
 
+// Conecta ao banco SQLite na nuvem (Turso)
+const client = createClient({
+    url: process.env.TURSO_DATABASE_URL,
+    authToken: process.env.TURSO_AUTH_TOKEN,
+});
 
-let db;
+// Adaptador para manter exatamente os mesmos comandos db.run, db.get, db.all e db.exec
+const db = {
+    exec: async (sql) => await client.executeMultiple(sql),
+    run: async (sql, args = []) => {
+        const res = await client.execute({ sql, args });
+        return { lastID: Number(res.lastInsertRowid) };
+    },
+    get: async (sql, args = []) => {
+        const res = await client.execute({ sql, args });
+        return res.rows[0] || null;
+    },
+    all: async (sql, args = []) => {
+        const res = await client.execute({ sql, args });
+        return res.rows;
+    }
+};
 
 async function iniciarServidor() {
     //Conecta e cria o arquivo banco.sqlite na pasta raiz
-    db = await open({
-        filename: path.join(__dirname, 'banco.sqlite'),
-        driver: sqlite3.Database
-    });
-
     await db.exec('PRAGMA foreign_keys = ON;');
 
     //Cria todas as tabelas de uma vez
