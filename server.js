@@ -84,8 +84,9 @@ async function iniciarServidor() {
 
     console.log('Banco SQLite conectado e as 3 tabelas estão prontas!');
 
-    //Só liga o servidor depois que o banco estiver 100% pronto
-    app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+
 }
 
 // --- ROTAS DE RESENHAS E COMENTÁRIOS ---
