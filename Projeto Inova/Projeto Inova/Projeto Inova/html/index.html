@@ -11,19 +11,28 @@
 
 <body>
     <header>
-        <!-- Menu dropdown -->
         <nav>
-             <ul class="navbar">
-          <li><a href="../html/index.html">Home</a></li>
-          <li><a href="../html/autores.html">Autores</a></li>
-          <li><a href="../html/livros.html">Livros</a></li>
-          <li><a href="../html/resenha.html">Resenhas</a></li>
-          <li><a href="../html/sobre.html">Sobre</a></li>
-          <li><a href="../html/cadastro.html">Cadastro</a></li>
-          <li><a href="../html/login.html">Entrar</a></li>
-        </ul>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="autores.html">Autores</a></li>
+                <li><a href="livros.html">Livros</a></li>
+                <li><a href="resenha.html">Resenhas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+
+                <li class="dropdown-wrapper item-usuario-direita">
+                    <a href="#" id="navTextoUsuario">
+                        <img id="navAvatar" src="" alt="" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; display: none; vertical-align: middle; margin-right: 8px;">
+                        <span>Usuário ▾</span>
+                    </a>
+                    <ul class="dropdown" id="listaDropdownUsuario">
+                        <li><a href="login.html">Entrar</a></li>
+                        <li><a href="cadastro.html">Cadastro</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
     </header>
+
 
     <!-- Estrutura carrossel -->
     <div class="carousel">
@@ -171,9 +180,8 @@
     <!-- Explica o propósito do site -->
     <section class="star-section">
         <br><br>
-        <h1>Literatura além dos astros</h1><br>
-        <h2>A casa dos críticos literários</h2>
-        <p>Descubra leituras inovadoras, resenhas críticas e muito mais! Tudo isso sem pressão de vendas, apenas paixão
+        <h2 style="color: #800000;">A casa dos críticos literários</h2>
+        <p style="color: #800000;">Descubra leituras inovadoras, resenhas críticas e muito mais! Tudo isso sem pressão de vendas, apenas paixão
             pelos livros.</p>
     </section>
 
@@ -186,13 +194,18 @@
             <p>Escolha o seu humor e encontre uma recomendação feita pela comunidade!! </p><br>
 
             <div class="mood-buttons">
-                <button class="btn-mood"> Plot twists</button>
-                <button class="btn-mood"> Para chorar</button>
-                <button class="btn-mood"> Vibe casual</button>
-                <button class="btn-mood"> Suspense arrepiante</button>
-                <button class="btn-mood"> Terror para os mais corajosos</button>
+                <a href="../html/livros.html#livros-terror"class="btn-mood">Terror</a>
+                <a href="../html/livros.html#livros-fantasia"class="btn-mood">Fantasia</a>
+                <a href="../html/livros.html#livros-nacionais"class="btn-mood">Nacionais</a>
+                <a href="../html/livros.html#livros-romance"class="btn-mood">Romance</a>
+                <a href="../html/livros.html#livros-infantil"class="btn-mood">Infantil</a>
+                <a href="../html/livros.html#livros-ficcao"class="btn-mood">Ficção</a>
+                <a href="../html/livros.html#livros-poesia"class="btn-mood">Poesia</a>
+                <a href="../html/livros.html#livros-aventura"class="btn-mood">Aventura</a>
             </div>
         </section>
+
+
 
         <br><br>
 
@@ -222,13 +235,20 @@
             </div>
         </section>
 
+    <section class="star-section">
+    <br><br>
+    <h2 style="color: #800000;">Quer escrever suas próprias resenhas?</h2>
+    <p style="color: #800000;">Então acesse <a href="../html/resenha.html" style="color: #aa4545;"">nossa página de resenhas</a></p>
+    </section>
+
+
     </main>
     <br><br><br>
 
     <footer class="rodape">
         <p>© 2026 Literatura além dos atros — Leituras inesquecíveis.</p>
     </footer>
-    <script src="../js/script.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

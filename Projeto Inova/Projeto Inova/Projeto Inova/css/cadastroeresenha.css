@@ -423,7 +423,7 @@
 
 .rodape {
     background-color: #800000;
-    color: #F2E8C6;
+    color: #ffffff;
     text-align: center;
     padding: 22px 15px;
     margin-top: 50px;
@@ -468,3 +468,227 @@
         font-size: 15px;
     }
 }
+
+/* --- ÁREA DE INTERAÇÕES DA RESENHA --- */
+.resenha-interacoes {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(128, 0, 0, 0.2);
+}
+
+.resenha-acoes {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+/* Botão de Curtir (Padrão e Estado Curtido) */
+.btn-curtir {
+    background-color: transparent;
+    color: #800000;
+    border: 2px solid #800000;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-curtir:hover {
+    background-color: rgba(128, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.btn-curtir.curtido {
+    background-color: #800000;
+    color: #ffffff;
+}
+
+.btn-curtir.curtido:hover {
+    background-color: #982B1C;
+}
+
+/* Botão de Excluir Resenha */
+.btn-excluir-resenha {
+    background-color: transparent;
+    color: #b02a37;
+    border: 2px solid #b02a37;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-excluir-resenha:hover {
+    background-color: #b02a37;
+    color: #ffffff;
+}
+
+/* --- SEÇÃO DE COMENTÁRIOS --- */
+.comentarios-secao {
+    background-color: rgba(128, 0, 0, 0.04);
+    border-radius: 10px;
+    padding: 18px;
+    margin-top: 15px;
+}
+
+.comentarios-titulo {
+    font-size: 15px;
+    font-weight: bold;
+    color: #800000;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.comentario-item {
+    background-color: #ffffff;
+    border-left: 4px solid #982B1C;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333333;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.btn-excluir-comentario {
+    background-color: rgba(176, 42, 55, 0.1);
+    color: #b02a37;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-excluir-comentario:hover {
+    background-color: #b02a37;
+    color: #ffffff;
+}
+
+/* Formulário de Novo Comentário */
+.form-comentario {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.input-comentario {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-comentario:focus {
+    border-color: #800000;
+}
+
+.btn-enviar-comentario {
+    background-color: #800000;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-enviar-comentario:hover {
+    background-color: #c75c4e;
+}
+
+/* Botão "Publicar Resenha" no formulário principal */
+#resenhaForm button[type="submit"] {
+    background-color: #800000;
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%; 
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+#resenhaForm button[type="submit"]:hover {
+    background-color: #c75c4e;
+    transform: translateY(-2px);
+}
+
+/* Botões "Curtir" e "Excluir" dentro do card da resenha */
+.resenha-interacoes > button,
+.resenha-acoes button {
+    background-color: #800000;
+    color: #ffffff !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.resenha-interacoes > button:hover,
+.resenha-acoes button:hover {
+    background-color: #c75c4e;
+    transform: translateY(-1px);
+}
+
+/*Deixa a caixa de comentário e o botão "Enviar" mais bonitos*/
+.comentarios-secao form {
+    margin-top: 14px !important;
+    gap: 10px !important;
+}
+
+.comentarios-secao input.com-texto {
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #d4c5a9;
+    border-radius: 6px;
+    background-color: #f6eedc; 
+}
+
+.comentarios-secao button[type="submit"] {
+    background-color: #800000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.comentarios-secao button[type="submit"]:hover {
+    background-color: #c75c4e;
+}
+

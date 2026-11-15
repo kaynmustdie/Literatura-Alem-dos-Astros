@@ -18,22 +18,27 @@
     =========================================== -->
 
     <header>
-
         <nav>
-         <ul class="navbar">
-          <li><a href="../html/index.html">Home</a></li>
-          <li><a href="../html/autores.html">Autores</a></li>
-          <li><a href="../html/livros.html">Livros</a></li>
-          <li><a href="../html/resenha.html">Resenhas</a></li>
-          <li><a href="../html/sobre.html">Sobre</a></li>
-          <li><a href="../html/cadastro.html">Cadastro</a></li>
-          <li><a href="../html/login.html">Entrar</a></li>
-        </ul>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="autores.html">Autores</a></li>
+                <li><a href="livros.html">Livros</a></li>
+                <li><a href="resenha.html">Resenhas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
 
+                <li class="dropdown-wrapper item-usuario-direita">
+                    <a href="#" id="navTextoUsuario">
+                        <img id="navAvatar" src="" alt="" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; display: none; vertical-align: middle; margin-right: 8px;">
+                        <span>Usuário ▾</span>
+                    </a>
+                    <ul class="dropdown" id="listaDropdownUsuario">
+                        <li><a href="login.html">Entrar</a></li>
+                        <li><a href="cadastro.html">Cadastro</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
-
     </header>
-
 
     <!-- ==========================================
          SOBRE O SITE
@@ -165,7 +170,7 @@
                         indicações e conteúdos literários.
                     </p>
 
-                    <a href="#" target="_blank">
+                    <a href="https://www.instagram.com/literaturaalemdosastros?obrf=MWhyY3FmYnZpMGE0" target="_blank">
                         @literaturaalemdosastros
                     </a>
 
@@ -217,17 +222,17 @@
 
             <div class="redes-buttons">
 
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/literaturaalemdosastros?obrf=MWhyY3FmYnZpMGE0" target="_blank">
                     Instagram
                 </a>
 
-                <a href="#">
+                <a href="https://www.tiktok.com/@literaturaalemdosastros" target="_blank">
                     TikTok
                 </a>
 
-                <a href="#">
+              <!--  <a href="#">
                     Goodreads
-                </a>
+                </a>-->
 
             </div>
 
@@ -269,6 +274,7 @@
         </p>
 
     </footer>
+    <script src="../js/auth.js"></script>
 
 </body>
 

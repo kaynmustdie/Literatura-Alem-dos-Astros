@@ -12,15 +12,24 @@
 
     <header>
         <nav>
-       <ul class="navbar">
-          <li><a href="../html/index.html">Home</a></li>
-          <li><a href="../html/autores.html">Autores</a></li>
-          <li><a href="../html/livros.html">Livros</a></li>
-          <li><a href="../html/resenha.html">Resenhas</a></li>
-          <li><a href="../html/sobre.html">Sobre</a></li>
-          <li><a href="../html/cadastro.html">Cadastro</a></li>
-          <li><a href="../html/login.html">Entrar</a></li>
-        </ul>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="autores.html">Autores</a></li>
+                <li><a href="livros.html">Livros</a></li>
+                <li><a href="resenha.html">Resenhas</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+
+                <li class="dropdown-wrapper item-usuario-direita">
+                    <a href="#" id="navTextoUsuario">
+                        <img id="navAvatar" src="" alt="" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; display: none; vertical-align: middle; margin-right: 8px;">
+                        <span>Usuário ▾</span>
+                    </a>
+                    <ul class="dropdown" id="listaDropdownUsuario">
+                        <li><a href="login.html">Entrar</a></li>
+                        <li><a href="cadastro.html">Cadastro</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -53,6 +62,13 @@
             <p class="ja-cadastrado">
                 Ainda não tem conta? <a href="../html/cadastro.html">Cadastre-se</a>
             </p>
+             <div id="mensagemCadastro">
+
+          <p class="ja-cadastrado" id="areaDeletarConta">
+           Deletar conta?
+           <a href="#" id="btnDeletarConta" style="color: #ff6b6b;">Deletar</a>
+           </p>
+      </div>
         </section>
     </main>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -85,10 +101,11 @@
                     mensagem.innerHTML = "Login realizado! Redirecionando...";
                     mensagem.className = "mensagem-sucesso";
 
-                    // Redireciona para a página de resenhas após 1 segundo
-                    setTimeout(() => {
-                        window.location.href = "../html/resenha.html";
-                    }, 1000);
+                    // Redireciona para a página de perfil
+                   setTimeout(() => {
+                   window.location.href = "perfil.html";
+                   }, 1000);
+
                 } else {
                     mensagem.innerHTML = dados.erro;
                     mensagem.className = "mensagem-erro";
@@ -99,5 +116,6 @@
             }
         });
     </script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>

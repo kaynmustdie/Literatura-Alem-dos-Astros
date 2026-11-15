@@ -1,241 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resenhas</title>
-    <link rel="stylesheet"href="../css/style.css">
-    <link rel="stylesheet" href="../css/cadastroeresenha.css">
-    <link rel="icon"href="../assets/logo - Editado.png"type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cadastroeresenha.css" />
+    <link rel="icon" href="../assets/logo - Editado.png" type="image/x-icon" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- ==========================================
          MENU
     =========================================== -->
 
     <header>
-        <!-- Menu dropdown -->
-        <nav>
-       <ul class="navbar">
-          <li><a href="../html/index.html">Home</a></li>
-          <li><a href="../html/autores.html">Autores</a></li>
-          <li><a href="../html/livros.html">Livros</a></li>
-          <li><a href="../html/resenha.html">Resenhas</a></li>
-          <li><a href="../html/sobre.html">Sobre</a></li>
-          <li><a href="../html/cadastro.html">Cadastro</a></li>
-          <li><a href="../html/login.html">Entrar</a></li>
-        </ul>
-        </nav>
-    </header>
+      <nav>
+        <ul class="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="autores.html">Autores</a></li>
+          <li><a href="livros.html">Livros</a></li>
+          <li><a href="resenha.html">Resenhas</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
 
+          <li class="dropdown-wrapper item-usuario-direita">
+            <a href="#" id="navTextoUsuario">
+              <img
+                id="navAvatar"
+                src=""
+                alt=""
+                style="
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  display: none;
+                  vertical-align: middle;
+                  margin-right: 8px;
+                "
+              />
+              <span>Usuário ▾</span>
+            </a>
+            <ul class="dropdown" id="listaDropdownUsuario">
+              <li><a href="login.html">Entrar</a></li>
+              <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
     <!-- ==========================================
          CONTEÚDO
     =========================================== -->
 
     <main class="resenha-container">
+      <!-- INTRODUÇÃO -->
 
+      <main class="resenha-container">
+        <!-- FORMULÁRIO -->
+        <section class="resenha-form-box">
+          <h2>Escreva sua resenha</h2>
 
-        <!-- INTRODUÇÃO -->
-
-<main class="resenha-container">
-    <!-- FORMULÁRIO -->
-    <section class="resenha-form-box">
-        <h2>Escreva sua resenha</h2>
-
-        <form id="resenhaForm">
+          <form id="resenhaForm">
             <div class="resenha-campo">
-                <label for="nome">Seu nome</label>
-                <input type="text" id="nome" placeholder="Digite seu nome" required>
+              <label for="nome">Seu nome</label>
+              <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome"
+                required
+              />
             </div>
 
             <div class="resenha-campo">
-                <label for="livro">Livro</label>
-                <input type="text" id="livro" placeholder="Digite o nome do livro" required>
+              <label for="livro">Livro</label>
+              <input
+                type="text"
+                id="livro"
+                placeholder="Digite o nome do livro"
+                required
+              />
             </div>
 
             <div class="resenha-campo">
-                <label for="nota">Nota</label>
-                <select id="nota" required>
-                    <option value="">Escolha uma nota</option>
-                    <option value="5">★★★★★ — 5/5</option>
-                    <option value="4">★★★★☆ — 4/5</option>
-                    <option value="3">★★★☆☆ — 3/5</option>
-                    <option value="2">★★☆☆☆ — 2/5</option>
-                    <option value="1">★☆☆☆☆ — 1/5</option>
-                </select>
+              <label for="nota">Nota</label>
+              <select id="nota" required>
+                <option value="">Escolha uma nota</option>
+                <option value="5">★★★★★ — 5/5</option>
+                <option value="4">★★★★☆ — 4/5</option>
+                <option value="3">★★★☆☆ — 3/5</option>
+                <option value="2">★★☆☆☆ — 2/5</option>
+                <option value="1">★☆☆☆☆ — 1/5</option>
+              </select>
             </div>
 
             <!-- NOVO: Campo para o texto da resenha -->
             <div class="resenha-campo">
-                <label for="texto">Sua opinião</label>
-                <textarea id="texto" rows="4" placeholder="O que achou da leitura?" required></textarea>
+              <label for="texto">Sua opinião</label>
+              <textarea
+                id="texto"
+                rows="4"
+                placeholder="O que achou da leitura?"
+                required
+              ></textarea>
             </div>
 
             <button type="submit">Publicar Resenha</button>
-        </form>
-    </section>
+          </form>
+        </section>
 
-    <!-- NOVO: Feed para ler e interagir com resenhas -->
-    <section class="feed-resenhas">
-        <h2>Resenhas da Comunidade</h2>
-        <div id="listaResenhas">
+        <!-- NOVO: Feed para ler e interagir com resenhas -->
+        <section class="feed-resenhas">
+          <h2>Resenhas da Comunidade</h2>
+          <div id="listaResenhas">
             <!-- O JavaScript vai preencher este espaço dinamicamente -->
-        </div>
-    </section>
-</main>
+          </div>
+        </section>
+      </main>
 
-
-        <!-- ==========================================
+      <!-- ==========================================
              RESENHAS PUBLICADAS
         =========================================== -->
 
-        <section class="resenhas-publicadas">
+      <section class="resenhas-publicadas">
+        <h2>Resenhas dos leitores</h2>
 
-            <h2>
-                Resenhas dos leitores
-            </h2>
+        <div id="listaResenhas">
+          <!-- RESENHA 1 -->
 
+          <article class="resenha-card">
+            <div class="resenha-card-top">
+              <div>
+                <h3>A Hora da Estrela</h3>
 
-            <div id="listaResenhas">
+                <p class="resenha-autor">Por Ana Clara</p>
+              </div>
 
-
-                <!-- RESENHA 1 -->
-
-                <article class="resenha-card">
-
-                    <div class="resenha-card-top">
-
-                        <div>
-
-                            <h3>
-                                A Hora da Estrela
-                            </h3>
-
-                            <p class="resenha-autor">
-                                Por Ana Clara
-                            </p>
-
-                        </div>
-
-                        <span class="resenha-nota">
-                            ★★★★★
-                        </span>
-
-                    </div>
-
-
-                    <p class="resenha-texto">
-
-                        Uma história emocionante e profunda.
-                        A narrativa faz o leitor refletir sobre
-                        a vida, a solidão e a busca por um lugar
-                        no mundo.
-
-                    </p>
-
-                </article>
-
-
-                <!-- RESENHA 2 -->
-
-                <article class="resenha-card">
-
-                    <div class="resenha-card-top">
-
-                        <div>
-
-                            <h3>
-                                Dom Casmurro
-                            </h3>
-
-                            <p class="resenha-autor">
-                                Por Ciely
-                            </p>
-
-                        </div>
-
-                        <span class="resenha-nota">
-                            ★★★★☆
-                        </span>
-
-                    </div>
-
-
-                    <p class="resenha-texto">
-
-                        Um clássico que desperta muitas dúvidas
-                        e interpretações. A narrativa deixa o
-                        leitor pensando sobre a história mesmo
-                        depois de terminar o livro.
-
-                    </p>
-
-                </article>
-
+              <span class="resenha-nota"> ★★★★★ </span>
             </div>
 
-        </section>
+            <p class="resenha-texto">
+              Uma história emocionante e profunda. A narrativa faz o leitor
+              refletir sobre a vida, a solidão e a busca por um lugar no mundo.
+            </p>
+          </article>
 
+          <!-- RESENHA 2 -->
+
+          <article class="resenha-card">
+            <div class="resenha-card-top">
+              <div>
+                <h3>Dom Casmurro</h3>
+
+                <p class="resenha-autor">Por Ciely</p>
+              </div>
+
+              <span class="resenha-nota"> ★★★★☆ </span>
+            </div>
+
+            <p class="resenha-texto">
+              Um clássico que desperta muitas dúvidas e interpretações. A
+              narrativa deixa o leitor pensando sobre a história mesmo depois de
+              terminar o livro.
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
-
 
     <!-- ==========================================
          RODAPÉ
     =========================================== -->
 
     <footer class="rodape">
-
-        <p>
-            © 2026 Literatura Além dos Astros —
-            Leituras inesquecíveis.
-        </p>
-
+      <p>© 2026 Literatura Além dos Astros — Leituras inesquecíveis.</p>
     </footer>
-
 
     <!-- ==========================================
          JAVASCRIPT
     =========================================== -->
-
     <script>
-    const API_URL = 'http://localhost:3000/api';
-    const formulario = document.getElementById("resenhaForm");
+      const API_URL = "http://localhost:3000/api";
+      const formulario = document.getElementById("resenhaForm");
+      const usuarioSalvo = localStorage.getItem("usuarioLogado");
+      const userLogado = usuarioSalvo ? JSON.parse(usuarioSalvo) : null;
 
-    //Carrega todas as resenhas salvas no SQLite assim que a página abre
-    document.addEventListener("DOMContentLoaded", carregarResenhas);
+      // 1. Verifica login ao carregar a página
+      document.addEventListener("DOMContentLoaded", () => {
+        const caixaFormulario = document.querySelector(".resenha-form-box");
 
-    async function carregarResenhas() {
+        if (!userLogado) {
+          // Se não estiver logado, substitui o formulário por um aviso de login
+          if (caixaFormulario) {
+            caixaFormulario.innerHTML = `
+                    <h2>Escreva sua resenha</h2>
+                    <p style="margin-top: 15px;">
+                        Você precisa estar conectado para publicar resenhas e comentar. 
+                        <a href="login.html" style="font-weight: bold; text-decoration: underline;">Faça login</a> ou 
+                        <a href="cadastro.html" style="font-weight: bold; text-decoration: underline;">crie sua conta</a>.
+                    </p>
+                `;
+          }
+        } else {
+          // Se estiver logado, preenche o campo nome com o @usuario e bloqueia edição
+          const campoNome = document.getElementById("nome");
+          if (campoNome) {
+            campoNome.value = userLogado.usuario;
+            campoNome.readOnly = true;
+          }
+        }
+
+        carregarResenhas();
+      });
+
+      // 2. Carrega todas as resenhas e comentários
+      async function carregarResenhas() {
         try {
-            const resposta = await fetch(`${API_URL}/resenhas`);
-            const resenhas = await resposta.json();
+          const resposta = await fetch(`${API_URL}/resenhas`);
+          const resenhas = await resposta.json();
 
-            const lista = document.getElementById("listaResenhas");
-            lista.innerHTML = ""; // Limpa a lista antes de preencher
+          const lista = document.getElementById("listaResenhas");
+          lista.innerHTML = "";
 
-            resenhas.forEach(resenha => {
-                // Gera as estrelas com base na nota salva no banco
-                let estrelas = "";
-                for (let i = 1; i <= 5; i++) {
-                    estrelas += i <= resenha.nota ? "★" : "☆";
-                }
+          resenhas.forEach((resenha) => {
+            let estrelas = "";
+            for (let i = 1; i <= 5; i++) {
+              estrelas += i <= resenha.nota ? "★" : "☆";
+            }
 
-                // Monta a lista de comentários dessa resenha
-                const comentariosHTML = resenha.comentarios.map(c => `
-                    <p class="comentario-item"><strong>${c.nome_usuario}:</strong> ${c.comentario}</p>
-                `).join("");
+            // Botão de excluir (apenas para o autor ou admin)
+            let botaoExcluirHTML = "";
+            if (
+              userLogado &&
+              (userLogado.usuario === resenha.nome_usuario ||
+                userLogado.is_admin === 1)
+            ) {
+              botaoExcluirHTML = `
+                        <button type="button" onclick="deletarResenha(${resenha.id})" style="color: #ff6b6b; margin-left: 10px;">
+                            🗑️ Excluir
+                        </button>
+                    `;
+            }
 
-                // Cria o card mantendo as suas classes CSS originais
-                const card = document.createElement("article");
-                card.classList.add("resenha-card");
+            // Botão de curtir (avisa para logar se for visitante)
+    const btnCurtirHTML = userLogado 
+    ? `<button type="button" onclick="curtirResenha(${resenha.id})">👍 Curtir (${resenha.curtidas})</button>`
+    : `<button type="button" onclick="alert('Faça login para curtir as resenhas!')" style="opacity: 0.7; cursor: not-allowed;">👍 Curtir (${resenha.curtidas})</button>`;
 
-                card.innerHTML = `
+            const comentariosHTML = resenha.comentarios
+              .map((c) => {
+                const podeExcluirCom =
+                  userLogado &&
+                  (userLogado.usuario === c.nome_usuario ||
+                    userLogado.is_admin === 1);
+                const btnExcluirCom = podeExcluirCom
+                  ? `<button type="button" onclick="deletarComentario(${c.id})" title="Excluir comentário" style="background: none; border: none; color: #ff6b6b; cursor: pointer; margin-left: 8px; font-size: 0.9em;">🗑️</button>`
+                  : "";
+
+                return `
+        <p class="comentario-item" style="display: flex; justify-content: space-between; align-items: center;">
+            <span><strong>${c.nome_usuario}:</strong> ${c.comentario}</span>
+            ${btnExcluirCom}
+        </p>
+    `;
+              })
+              .join("");
+            // Formulário de comentário (visível apenas para usuários logados)
+            const formComentarioHTML = userLogado
+              ? `
+                    <form onsubmit="enviarComentario(event, ${resenha.id})" style="display: flex; gap: 5px; margin-top: 8px;">
+                        <input type="text" class="com-texto" placeholder="Comentar como ${userLogado.usuario}..." required style="flex: 1;">
+                        <button type="submit">Enviar</button>
+                    </form>
+                `
+              : `<p style="font-size: 0.9em; opacity: 0.8; margin-top: 8px;"><a href="login.html">Entre na conta</a> para comentar.</p>`;
+
+            const card = document.createElement("article");
+            card.classList.add("resenha-card");
+
+            card.innerHTML = `
                     <div class="resenha-card-top">
                         <div>
                             <h3>${resenha.livro}</h3>
@@ -246,84 +290,164 @@
 
                     <p class="resenha-texto">${resenha.texto}</p>
 
-                    <!-- Área de Interação: Curtir e Comentar -->
                     <div class="resenha-interacoes" style="margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px;">
                         <button type="button" onclick="curtirResenha(${resenha.id})">
                             👍 Curtir (${resenha.curtidas})
                         </button>
+                        ${botaoExcluirHTML}
 
                         <div class="comentarios-secao" style="margin-top: 10px;">
                             ${comentariosHTML}
-                            <form onsubmit="enviarComentario(event, ${resenha.id})" style="display: flex; gap: 5px; margin-top: 8px;">
-                                <input type="text" class="com-nome" placeholder="Seu nome" required>
-                                <input type="text" class="com-texto" placeholder="Comentar..." required>
-                                <button type="submit">Enviar</button>
-                            </form>
+                            ${formComentarioHTML}
                         </div>
                     </div>
                 `;
 
-                lista.appendChild(card);
-            });
+            lista.appendChild(card);
+          });
         } catch (erro) {
-            console.error("Erro ao carregar resenhas:", erro);
+          console.error("Erro ao carregar resenhas:", erro);
         }
-    }
+      }
 
-    // Envia a nova resenha para o server.js salvar no SQLite
-    formulario.addEventListener("submit", async function(event) {
-        event.preventDefault();
+      // 3. Envia nova resenha
+      if (formulario) {
+        formulario.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          if (!userLogado) return alert("Faça login para publicar.");
 
-        const dados = {
-            nome: document.getElementById("nome").value,
+          const dados = {
+            nome: userLogado.usuario,
             livro: document.getElementById("livro").value,
             nota: Number(document.getElementById("nota").value),
-            texto: document.getElementById("texto").value
-        };
+            texto: document.getElementById("texto").value,
+          };
 
-        const resposta = await fetch(`${API_URL}/resenhas`, {
+          const resposta = await fetch(`${API_URL}/resenhas`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(dados)
-        });
+            body: JSON.stringify(dados),
+          });
 
-        if (resposta.ok) {
+          if (resposta.ok) {
             formulario.reset();
-            carregarResenhas(); // Recarrega a lista direto do banco de dados
-        } else {
-            alert("Erro ao salvar resenha. Verifique se escolheu uma nota válida.");
-        }
+            document.getElementById("nome").value = userLogado.usuario; // Mantém o nome preenchido
+            carregarResenhas();
+          } else {
+            const erro = await resposta.json();
+            alert(erro.erro || "Erro ao salvar resenha.");
+          }
+        });
+      }
+
+    ///Curtir resenha (envia o usuário logado para validação)
+    async function curtirResenha(id) {
+    if (!userLogado) {
+        alert("Você precisa estar logado para curtir.");
+        return;
+    }
+
+    const resposta = await fetch(`${API_URL}/resenhas/${id}/curtir`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ usuarioLogado: userLogado.usuario })
     });
 
-    // 3. Função para curtir
-    async function curtirResenha(id) {
-        await fetch(`${API_URL}/resenhas/${id}/curtir`, { method: "POST" });
+    if (resposta.ok) {
         carregarResenhas();
     }
+}
 
-    // 4. Função para enviar comentário
-    async function enviarComentario(event, resenhaId) {
+// Verifica se o usuário atual está na lista de quem curtiu esta resenha
+const jaCurtiu = userLogado && resenha.usuarios_curtiram && resenha.usuarios_curtiram.includes(userLogado.usuario);
+
+const btnCurtirHTML = userLogado 
+    ? `<button type="button" onclick="curtirResenha(${resenha.id})" 
+        style="${jaCurtiu ? 'background-color: #800000; color: #fff; font-weight: bold;' : ''}">
+        ${jaCurtiu ? '❤️ Curtido' : '🤍 Curtir'} (${resenha.curtidas})
+       </button>`
+    : `<button type="button" onclick="alert('Faça login para curtir as resenhas!')" style="opacity: 0.7; cursor: not-allowed;">
+        🤍 Curtir (${resenha.curtidas})
+       </button>`;
+
+// Verifica se quem está logado é o autor da resenha ou é admin
+const podeExcluirResenha = userLogado && (
+    userLogado.usuario === resenha.nome_usuario || Number(userLogado.is_admin) === 1
+);
+
+const botaoExcluirHTML = podeExcluirResenha 
+    ? `<button type="button" onclick="deletarResenha(${resenha.id})" style="color: #ff6b6b; margin-left: 10px; cursor: pointer;">🗑️ Excluir</button>` 
+    : "";
+
+
+      // 5. Enviar comentário usando o usuário logado
+      async function enviarComentario(event, resenhaId) {
         event.preventDefault();
-        const form = event.target;
+        if (!userLogado) return alert("Faça login para comentar.");
 
+        const form = event.target;
         const dados = {
-            nome: form.querySelector(".com-nome").value,
-            comentario: form.querySelector(".com-texto").value
+          nome: userLogado.usuario,
+          comentario: form.querySelector(".com-texto").value,
         };
 
-        await fetch(`${API_URL}/resenhas/${resenhaId}/comentar`, {
+        const resposta = await fetch(
+          `${API_URL}/resenhas/${resenhaId}/comentar`,
+          {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(dados)
-        });
+            body: JSON.stringify(dados),
+          },
+        );
 
-        carregarResenhas();
+        if (resposta.ok) {
+          carregarResenhas();
+        }
+      }
+
+
+// deletar
+    async function deletarResenha(id) {
+    if (!confirm("Tem certeza que deseja apagar esta resenha?")) return;
+
+    const resposta = await fetch(`${API_URL}/resenhas/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ usuarioLogado: userLogado.usuario })
+    });
+
+    if (resposta.ok) {
+        carregarResenhas(); // Atualiza a lista na tela imediatamente
+    } else {
+        const erro = await resposta.json();
+        alert(erro.erro || "Erro ao excluir resenha.");
     }
-</script>
+}
+
+
+    // deletar comentário
+    async function deletarComentario(id) {
+    if (!confirm("Deseja apagar este comentário?")) return;
+
+    const resposta = await fetch(`${API_URL}/comentarios/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ usuarioLogado: userLogado.usuario })
+    });
+
+    if (resposta.ok) {
+        carregarResenhas();
+    } else {
+        const erro = await resposta.json();
+        alert(erro.erro || "Erro ao excluir comentário.");
+    }
+
+    
+}
+    </script>
 
     <script src="../js/index.js"></script>
     <script src="../js/server.js"></script>
-
-</body>
-
+    <script src="../js/auth.js"></script>
+  </body>
 </html>
