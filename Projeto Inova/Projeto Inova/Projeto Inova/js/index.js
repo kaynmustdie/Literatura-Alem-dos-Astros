@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api'; // Endereço do seu servidor
+const API_URL = '/api'; // Endereço do seu servidor
 
 // 1. Carregar resenhas ao abrir a página
 document.addEventListener('DOMContentLoaded', carregarResenhas);

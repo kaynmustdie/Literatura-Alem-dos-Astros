@@ -13,6 +13,12 @@ app.use(express.json({ limit: '5mb' })); // Permite salvar fotos convertidas em 
 const pastaSite = path.join(__dirname, 'Projeto Inova', 'Projeto Inova', 'Projeto Inova');
 app.use(express.static(pastaSite));
 
+//Redireciona para a página principal
+app.get('/', (req, res) => {
+    res.sendFile(path.join(pastaSite, 'html', 'index.html'));
+});
+
+
 let db;
 
 async function iniciarServidor() {
